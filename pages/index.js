@@ -1,8 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-
+import Link from "next/link";
 export default function Home() {
-  return <div>asdasd</div>;
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link href="/calculator">Calculator</Link>
+        </li>
+        <li>
+          <Link href="/movie">movie</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 // <Navbar bg="primary" variant="dark">

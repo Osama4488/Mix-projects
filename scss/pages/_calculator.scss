@@ -6,7 +6,7 @@
   margin: 0 auto;
   width: 256px;
   text-align: center;
-  border: 10x solid #000;
+  border: 10px solid #000;
   background: #000;
   border-radius: 5px;
   padding: 10px;
@@ -57,12 +57,4 @@ button:active {
 }
 .highlight {
   background: #56cbdb !important;
-}
-* {
-  font-size: 18px;
-}
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
