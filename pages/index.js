@@ -9,7 +9,7 @@ export default function Home() {
           <Link href="/calculator">Calculator</Link>
         </li>
         <li>
-          <Link href="/movie">movie</Link>
+          <Link href="/movie/home">movie</Link>
         </li>
       </ul>
     </nav>
