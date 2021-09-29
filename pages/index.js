@@ -1,18 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+// import { Pagination } from "antd";
 export default function Home() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link href="/calculator">Calculator</Link>
-        </li>
-        <li>
-          <Link href="/movie/home">movie</Link>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link href="/calculator">Calculator</Link>
+          </li>
+          <li>
+            <Link href="/movie/home">movie</Link>
+          </li>
+          <li>
+            <Link href="/movie/genre">Home Genres</Link>
+          </li>
+        </ul>
+      </nav>
+      {/* <div>
+        <Pagination defaultCurrent={1} total={10} />
+      </div> */}
+    </>
   );
 }
 
