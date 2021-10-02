@@ -10,17 +10,17 @@ export default function Home() {
           <li>
             <Link href="/calculator">Calculator</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/movie/home">movie</Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/movie/genre">Home Genres</Link>
           </li>
+          <li>
+            <Link href="/movie">Netflix</Link>
+          </li>
         </ul>
       </nav>
-      {/* <div>
-        <Pagination defaultCurrent={1} total={10} />
-      </div> */}
     </>
   );
 }

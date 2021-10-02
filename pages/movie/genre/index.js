@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Card } from "antd";
 import { motion } from "framer-motion";
 import Moment from "react-moment";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Link from "next/link";
+
+export const useMainContext = React.createContext(null);
 export default function Home() {
   const [data, setData] = useState([]);
 

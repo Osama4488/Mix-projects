@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { Pagination } from "antd";
+import { useMainContext } from "./genre";
 export default function Id() {
+  const Context = useContext(useMainContext);
+  console.log(Context, "context data");
   const router = useRouter();
   const { id } = router.query;
   const [data, setData] = useState([]);
@@ -17,5 +21,25 @@ export default function Id() {
   }, []);
   const result = data.filter((p) => p.title === id);
   console.log(result, "result");
-  return <h1> Hello {id}</h1>;
+  return (
+    <>
+      {/* <Context.Consumer>
+    {
+      return(
+
+        )
+    }
+    </Context.Consumer> */}
+      <h1> Hello {id}</h1>{" "}
+      {/* (
+      <Pagination defaultCurrent={1} total={50} /> */}
+      {/* {contextData.map((i) => {
+        return (
+          <>
+            <h1>{i.id}</h1>
+          </>
+        );
+      })} */}
+    </>
+  );
 }

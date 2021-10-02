@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Moment from "react-moment";
-import { Pagination } from "antd";
+
 export default function Id() {
   const router = useRouter();
   const { id } = router.query;
@@ -28,7 +28,7 @@ export default function Id() {
           const res = url.replace(/ /g, "-");
           return (
             <>
-              <Link href={`/movie/${i.original_title}`}>
+              <Link href={`/movie/${i.id}`}>
                 <motion.a
                   className="home-section-card"
                   whileHover={{
@@ -43,6 +43,12 @@ export default function Id() {
 
                   // }}
                   >
+                    {/* <div>
+                      {`https://image.tmdb.org/t/p/w500/${i.poster_path}`}
+                    </div> */}
+                    <img
+                      src={`https://image.tmdb.org/t/p/w300/${i.poster_path}`}
+                    />
                     <div>
                       <motion.div
                         whileHover={{ scale: 1.1, originX: 0 }}
