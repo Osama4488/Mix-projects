@@ -1,12 +1,18 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Spin } from "antd";
+
+// import Spin from "antd/es/spin";
+// import "antd/es/spin/style/css";
 // import Query from "./query.js";
 export default function Hero() {
   const [keyword, setKeyword] = useState("");
   const [data, setData] = useState([]);
   const [passData, setpassData] = useState(false);
+  const [loading, setLoading] = useState(false);
   const onSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     let inputKeyword = e.target.elements.search.value;
     setKeyword(inputKeyword);
@@ -21,11 +27,12 @@ export default function Hero() {
       )
       .then((res) => {
         setData(res.data.results);
+        setLoading(false);
       });
   };
 
-  // console.log(data, "results");
-  // console.log(keyword, "keyword");
+  console.log(data, "results");
+  console.log(keyword, "keyword");
 
   return (
     <section className="home-section">
@@ -33,6 +40,7 @@ export default function Hero() {
         <img className="home-section-logo-img" src="/images/netflix-logo.jpg" />
         <button className="home-section-btn">Sign In</button>
       </div>
+
       <div className="home-section-flex-bottom">
         <h2 className="home-section-heading">
           Unlimited movies, TV shows, and more.
@@ -57,12 +65,16 @@ export default function Hero() {
                   }}
         
         > */}
-        <Link href="/movie/components/hero/query">
-          <button type="submit" className="home-section-search">
-            Search
-          </button>
-        </Link>
+        {/* <Link href="/movie/components/hero/query"> */}
+        {console.log(loading, "lading")}
+        <button type="submit" className="home-section-search">
+          Search
+          {loading ? <Spin spinning={loading} /> : ""}
+        </button>
+
+        {/* </Link> */}
       </form>
+
       {/* {passData && (
         <>
           alert(passData)
