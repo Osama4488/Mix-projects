@@ -46,14 +46,42 @@
   &-flex-top {
     display: flex;
     justify-content: space-between;
+    padding-top: 20px;
   }
   &-logo-img {
     width: 100px;
     height: 50px;
   }
+  &-genre {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    color: red;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 300ms ease all;
+    &:hover {
+      svg {
+        transform: rotate(180deg);
+        transition-duration: 0.5s;
+      }
+    }
+    // svg {
+    //   &-hover {
+    //   }
+    // }
+  }
+  &-btn-flex {
+    display: flex;
+    align-items: center;
+  }
   &-btn {
-    width: 100px;
-    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 0px 30px;
+    height: 83%;
     background-color: red;
     font-weight: 600;
     cursor: not-allowed;
@@ -111,6 +139,9 @@
       background-color: red;
     }
   }
+}
+.ant-dropdown-menu {
+  width: 800px;
 }
 body {
   color: #fff;

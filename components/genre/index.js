@@ -19,7 +19,7 @@ export default function Home() {
         setData(res.data.genres);
       });
   }, []);
-  console.log(data, "new data");
+  // console.log(data, "new data");
   return (
     <>
       <h1
