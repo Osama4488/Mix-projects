@@ -100,11 +100,9 @@ export default function Hero() {
         return (
           <Menu.Item key={Math.random()} style={{ width: "31%" }}>
             <Link
-              href={`movie/genre/` + i?.name}
+              href={`movie/genre/` + i?.id}
               target="_blank"
               rel="noopener noreferrer"
-              // href={`movie/genre/${i.name}`}
-              // onClick={() => openGenre(i?.id)}
             >
               {i?.name}
             </Link>

@@ -1,0 +1,28 @@
+.genre-list {
+  padding: 100px;
+  &-container {
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &-card {
+    width: 15%;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    margin-right: 15px;
+  }
+  &-img {
+    width: 100%;
+    min-height: 258px;
+    object-fit: cover;
+  }
+  &-title {
+    color: coral;
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
