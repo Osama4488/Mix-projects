@@ -17,7 +17,7 @@ export default function Home() {
             <Link href="/movie/genre">Home Genres</Link>
           </li>
           <li>
-            <Link href="/movie">Netflix</Link>
+            <Link href="/movie">OsamaFlix</Link>
           </li>
         </ul>
       </nav>
