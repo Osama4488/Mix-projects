@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "push": "git add . && git commit -m 'pushing' || exit 0",
+    "push": "git add . && git commit -m 'pushing' && git push || exit 0",
     "lint": "next lint"
   },
   "dependencies": {
