@@ -8,7 +8,7 @@ export default function Home() {
       <nav>
         <ul>
           <li>
-            <Link href="/calculator">Calculator</Link>
+            <Link href="/calculator">Calculator app</Link>
           </li>
           {/* <li>
             <Link href="/movie/home">movie</Link>
