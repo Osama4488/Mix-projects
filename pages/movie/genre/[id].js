@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pagination, Spin, Space } from "antd";
 import Link from "next/link";
-export default function genre() {
+export default function Genre() {
   const [genre, setGenre] = useState({
     data: [],
     loading: false,
@@ -50,6 +50,7 @@ export default function genre() {
               {genre.data.map((i) => {
                 return (
                   <Link
+                    key={Math.random()}
                     href={`/single/` + i?.id}
                     target="_blank"
                     rel="noopener noreferrer"
