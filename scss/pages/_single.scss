@@ -1,0 +1,50 @@
+.single-section {
+  padding: 50px;
+  background-color: #000;
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .single-left {
+      width: 60%;
+      .single-main-img {
+        width: 100%;
+        height: 400px;
+      }
+    }
+    .flex-left-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 10px;
+      .left-small-img {
+        width: 20%;
+        &-img {
+          height: 200px;
+          width: 100%;
+        }
+      }
+      &-right {
+        width: 80%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+      }
+    }
+    .movie-info-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+      &-wrapper {
+        width: 50%;
+      }
+    }
+    .single-right {
+    }
+  }
+}
