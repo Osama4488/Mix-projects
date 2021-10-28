@@ -1,9 +1,26 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { db } from "../../firebase.js";
+import { collection, addDoc } from "firebase/firestore";
 export default function Single() {
   const router = useRouter();
   const id = router.query.single;
-
+  useEffect(() => {
+    getFirebase();
+  }, []);
+  async function getFirebase() {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        first: "asdasdas",
+        last: "asdasd",
+        born: 12312312,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
   return (
     <>
       {/* <div>{id}</div> */}
@@ -44,7 +61,9 @@ export default function Single() {
               </div>
             </div>
           </div>
-          <div> </div>
+          <div className="single-right">
+            <div className="single-right-heading">Latest Updates</div>
+          </div>
         </div>
       </section>
     </>

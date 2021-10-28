@@ -4,12 +4,27 @@
   &-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     .single-left {
-      width: 60%;
+      width: 69%;
       .single-main-img {
         width: 100%;
         height: 400px;
+      }
+    }
+    .single-right {
+      width: 29%;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      &-heading {
+        background: #f3a22d;
+        padding: 5px 10px;
+
+        font-size: 20px;
+
+        color: #fff;
+        font-weight: 700;
       }
     }
     .flex-left-bottom {
