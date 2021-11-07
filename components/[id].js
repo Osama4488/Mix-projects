@@ -5,7 +5,7 @@ import { Pagination } from "antd";
 import { useMainContext } from "./genre";
 export default function Id() {
   const Context = useContext(useMainContext);
-  console.log(Context, "context data");
+  
   const router = useRouter();
   const { id } = router.query;
   const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ export default function Id() {
       });
   }, []);
   const result = data.filter((p) => p.title === id);
-  console.log(result, "result");
+ 
   return (
     <>
       {/* <Context.Consumer>

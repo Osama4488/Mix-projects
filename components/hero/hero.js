@@ -88,8 +88,7 @@ export default function Hero() {
       console.log(y, "error in getting genre id ===>");
     }
   };
-  console.log(basicInfo, "basic info");
-  console.log(singleGenre, "single genre");
+ 
   const menu = (
     <Menu
       style={{

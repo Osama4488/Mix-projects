@@ -5,37 +5,34 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pagination, Spin, Space } from "antd";
 import Link from "next/link";
-export default function Genre() {
-  const [genre, setGenre] = useState({
-    data: [],
-    loading: false,
-  });
+export default function Genre({genre, loading}) {
+  // const [genre, setGenre] = useState({
+  //   data: [],
+  //   loading: false,
+  // });
   const [basicInfo, setbasicInfo] = useState({});
   const router = useRouter();
   const id = router.query.id;
-  console.log(genre, "genre");
   useEffect(() => {
-    setGenre({ ...genre, loading: true });
-    console.log(genre, "try");
-    if (id) {
-      try {
-        axios
-          .get(
-            `https://api.themoviedb.org/3/discover/movie?api_key=d0a135171d58c78f1c69bcca1de4b35d&with_genres=${id}`
-          )
-          .then((res) => {
-            setbasicInfo(res.data);
-            setGenre({ ...genre, data: res.data.results, loading: false });
-            console.log(genre, "then");
-            console.log(id, "id");
-          });
-      } catch (y) {
-        setGenre({ ...genre, loading: false });
-        console.log(y, "error in getting genre id ===>");
-      }
-    }
+    // setGenre({ ...genre, loading: true });
+    // if (id) {
+    //   try {
+    //     axios
+    //       .get(
+    //         `https://api.themoviedb.org/3/discover/movie?api_key=d0a135171d58c78f1c69bcca1de4b35d&with_genres=${id}`
+    //       )
+    //       .then((res) => {
+    //         setbasicInfo(res.data);
+    //         setGenre({ ...genre, data: res.data.results, loading: false });
+    //         console.log(genre, "then");
+    //         console.log(id, "id");
+    //       });
+    //   } catch (y) {
+    //     setGenre({ ...genre, loading: false });
+    //     console.log(y, "error in getting genre id ===>");
+    //   }
+    // }
   }, [id]);
-  console.log(genre, "useeffect ke bd");
   return (
     <>
       <section className="genre-list">
@@ -47,7 +44,7 @@ export default function Genre() {
             </Space>
           ) : (
             <>
-              {genre.data.map((i) => {
+              {genre.map((i) => {
                 return (
                   <Link
                     key={Math.random()}
@@ -78,4 +75,20 @@ export default function Genre() {
       </section>
     </>
   );
+}
+
+
+
+export async function getServerSideProps(context) {
+
+  const {data} = await axios
+  .get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=d0a135171d58c78f1c69bcca1de4b35d&with_genres=${context.params.id}`
+  )
+
+
+
+  return {
+    props: {genre:data.results, loading : false},
+  }
 }

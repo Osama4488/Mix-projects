@@ -49,7 +49,7 @@ export default function Query() {
   useEffect(() => {
     getData();
   }, [router.query?.str]);
-  console.log(data.data, "new data");
+ 
   return (
     <div>
       {data.loading ? (
