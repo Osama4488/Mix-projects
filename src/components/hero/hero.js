@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Spin, Drawer, Button, Space } from "antd";
-import { movieContext } from "../../context";
+// import { movieContext } from "../../../context";
 import router, { useRouter } from "next/router";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { Menu, Dropdown } from "antd";

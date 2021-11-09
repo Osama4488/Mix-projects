@@ -17,7 +17,6 @@ const alias = {
   services: join(paths.src,"services"),
   components: join(paths.src, "components"),
   scss: join(paths.src, "scss"),
-
 };
 
 

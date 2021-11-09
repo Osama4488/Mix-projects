@@ -1,4 +1,4 @@
-import {api} from "../public/services/api";
+
 import { useEffect,useState } from "react";
 import { Pagination, Spin, Space } from "antd";
 import axios from "axios";
@@ -11,6 +11,7 @@ export default function CSR({results}){
     data: [],
     loading: false,
   });
+  console.log(aaa,"aaa");
   // useEffect(() => {
   //   setGenre({ ...genre, loading: true });
   //   try {

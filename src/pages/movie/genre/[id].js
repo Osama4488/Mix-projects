@@ -1,10 +1,11 @@
 import React from "react";
-import Categories from "/components/genre";
+
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pagination, Spin, Space } from "antd";
 import Link from "next/link";
+
 export default function Genre({genre, loading}) {
   // const [genre, setGenre] = useState({
   //   data: [],

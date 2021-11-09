@@ -2,11 +2,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Spin } from "antd";
-import { movieContext } from "../../context";
+// import { movieContext } from "../../context";
 import router, { useRouter } from "next/router";
 
 export default function Query() {
-  const ctx = movieContext();
+  // const ctx = movieContext();
   const router = useRouter();
   const [data, setData] = useState({
     loading: true,

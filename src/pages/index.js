@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 // import { Pagination } from "antd";
-export default function Home() {
+export default function Home({router}) {
+  
   return (
     <>
       <nav>

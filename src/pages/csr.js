@@ -1,4 +1,4 @@
-import {api} from "../public/services/api";
+
 import { useEffect,useState } from "react";
 import { Pagination, Spin, Space } from "antd";
 import axios from "axios";
