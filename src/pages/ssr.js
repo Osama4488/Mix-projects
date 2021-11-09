@@ -11,7 +11,7 @@ export default function CSR({results}){
     data: [],
     loading: false,
   });
-  console.log(aaa,"aaa");
+  
   // useEffect(() => {
   //   setGenre({ ...genre, loading: true });
   //   try {
