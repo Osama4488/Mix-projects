@@ -6,21 +6,21 @@ import { collection, addDoc } from "firebase/firestore";
 export default function Single() {
   const router = useRouter();
   const id = router.query.single;
-  useEffect(() => {
-    getFirebase();
-  }, []);
-  async function getFirebase() {
-    try {
-      const docRef = await addDoc(collection(db, "users"), {
-        first: "asdasdas",
-        last: "asdasd",
-        born: 12312312,
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  }
+  // useEffect(() => {
+  //   getFirebase();
+  // }, []);
+  // async function getFirebase() {
+  //   try {
+  //     const docRef = await addDoc(collection(db, "users"), {
+  //       first: "asdasdas",
+  //       last: "asdasd",
+  //       born: 12312312,
+  //     });
+  //     console.log("Document written with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  // }
   return (
     <>
       {/* <div>{id}</div> */}
