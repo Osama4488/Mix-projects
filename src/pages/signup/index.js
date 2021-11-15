@@ -130,7 +130,7 @@ export default function Signup() {
             )}
             <div className="inp">
               <form action="" onSubmit={(e) => onSubmit(e)}>
-                <label for="" className="email">
+                <label htmlFor="" className="email">
                   First Name
                 </label>
                 <i className="fas fa-envelope envelope"></i>
@@ -144,7 +144,7 @@ export default function Signup() {
                   required
                 />
 
-                <label for="" className="pass">
+                <label htmlFor="" className="pass">
                   Last Name
                 </label>
                 <i className="fas fa-lock pass"></i>
@@ -157,7 +157,7 @@ export default function Signup() {
                   id="lastname"
                   required
                 />
-                <label for="" className="pass">
+                <label htmlFor="" className="pass">
                   Email
                 </label>
                 <i className="fas fa-lock pass"></i>
@@ -170,7 +170,7 @@ export default function Signup() {
                   id="email"
                   required
                 />
-                <label for="" className="pass">
+                <label htmlFor="" className="pass">
                   Password
                 </label>
                 <i className="fas fa-lock pass"></i>
@@ -195,7 +195,7 @@ export default function Signup() {
               </button>
             </div>
             <div className="check">
-              <label for="privacy">
+              <label htmlFor="privacy">
                 I read and accept the User Agreement and <br />
                 Privacy Policy.
                 <input id="privacy" type="checkbox" />
