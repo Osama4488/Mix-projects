@@ -15,27 +15,22 @@ export default function Signin() {
       password: "",
     },
   ]);
-
+  let email = "";
   useEffect(() => {
     const db = getDatabase();
     const starCountRef = ref(db, "users");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      // setUsers(data);
-      // console.log(data, "data");
-      Object.keys(data).forEach((key) => {
-        // The ID is the key
-        console.log(key, "id");
-        // console.log(data[key], "id data");
-        const newData = data[key];
-        const { firstname, lastname, email, password } = data;
-        // setUsers(data[key]);
-        setUsers([...users, { newData }]);
-        console.log(users, "state data");
-        console.log(newData, "new data");
-      });
-      // console.log(users, "state data");
-      // updateStarCount(postElement, data);
+
+      email =
+        Object.keys(data)
+          .map((key) => {
+            console.log(key, "id");
+            const newData = data[key];
+            return newData;
+          })
+          .find((el) => el.email === "yahya@gmail.com") || [];
+      console.log(email.email, "asdmaiosndoiasnd");
     });
     console.log(starCountRef, "a");
   }, []);

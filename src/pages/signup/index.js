@@ -2,9 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { db } from "../../../firebase.js";
+import { getDatabase } from "firebase/database";
 import { collection, addDoc } from "firebase/firestore";
 import { Spin, Alert } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import { ref, onValue } from "firebase/database";
 export default function Signup() {
   const [userData, setUserData] = useState({
     firstname: "",
@@ -15,10 +17,28 @@ export default function Signup() {
     error: "",
     posted: "",
   });
+  const [newEmail, setNewEmail] = useState("");
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  useEffect(() => {
-    // getFirebase();
-  }, []);
+
+  // useEffect(() => {
+  //   const db = getDatabase();
+  //   const starCountRef = ref(db, "users");
+  //   onValue(starCountRef, (snapshot) => {
+  //     const data = snapshot.val();
+
+  //     dbEmail =
+  //       Object.keys(data)
+  //         .map((key) => {
+  //           console.log(key, "id");
+  //           const newData = data[key];
+  //           return newData;
+  //         })
+  //         .find((el) => el.email === "as@asdasdasdasd") || [];
+
+  //   });
+  //   setUserData({ ...userData, email: dbEmail });
+
+  // }, []);
   // async function getFirebase() {
   //   try {
   //     const docRef = await addDoc(collection(db, "users"), {
@@ -31,6 +51,30 @@ export default function Signup() {
   //     console.error("Error adding document: ", e);
   //   }
   // }
+
+  function getDbUsers() {
+    let dbEmail = [];
+    const db = getDatabase();
+    const starCountRef = ref(db, "users");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data, "data");
+      dbEmail =
+        Object.keys(data)
+          .map((key) => {
+            const newData = data[key];
+            console.log(newData, "new data");
+            return newData;
+          })
+          .find((el) => el.email === userData.email) || [];
+    });
+    setNewEmail(dbEmail.email);
+    console.log(dbEmail, "dbEmail");
+    console.log(dbEmail.email, "dbEmail ka email");
+    console.log(userData.email, "userdata ka email");
+    // console.log(em, "user given email");
+    // setUserData({ ...userData, email: dbEmail.email });
+  }
   let name, value;
   const postUserData = (event) => {
     name = event.target.name;
@@ -38,60 +82,46 @@ export default function Signup() {
     setUserData({ ...userData, [name]: value });
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   let email = e.target.elements.email.value;
-  //   let password = e.target.elements.password.value;
-
-  //   try {
-  //     try {
-  //       const docRef = addDoc(collection(db, "users"), {
-  //         email: email,
-  //         password: password,
-  //         born: 12312312,
-  //       });
-  //       console.log("Document written with ID: ", docRef.id);
-  //     } catch (e) {
-  //       console.error("Error adding document: ", e);
-  //     }
-  //   } catch (e) {
-  //     console.log(e, "error <=== get data movies");
-  //   }
-  // };
   const onSubmitFirebase = async (event) => {
+    getDbUsers();
     setUserData({ ...userData, loading: true });
     event.preventDefault();
     const { firstname, lastname, email, password } = userData;
-    if (firstname && lastname && email && password) {
-      const res = await fetch(
-        "https://osamaflix-17d99-default-rtdb.firebaseio.com/users.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstname,
-            lastname,
-            email,
-            password,
-          }),
-        }
-      );
-      if (res) {
-        setUserData({
-          firstname: "",
-          lastname: "",
-          email: "",
-          password: "",
-          loading: false,
-          posted: "true",
-        });
-      } else {
-        setUserData({ ...userData, error: "true", posted: "false" });
-      }
+
+    if (userData.email === newEmail) {
+      setUserData({ ...userData, error: "exist", posted: "false" });
     } else {
-      setUserData({ ...userData, error: "empty", posted: "false" });
+      if (firstname && lastname && email && password) {
+        const res = await fetch(
+          "https://osamaflix-17d99-default-rtdb.firebaseio.com/users.json",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              firstname,
+              lastname,
+              email,
+              password,
+            }),
+          }
+        );
+        if (res) {
+          setUserData({
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: "",
+            loading: false,
+            posted: "true",
+          });
+        } else {
+          setUserData({ ...userData, error: "true", posted: "false" });
+        }
+      } else {
+        setUserData({ ...userData, error: "empty", posted: "false" });
+      }
     }
   };
   return (
@@ -122,6 +152,13 @@ export default function Signup() {
               <Alert
                 message="Error"
                 description="Please fill all fields"
+                type="error"
+                showIcon
+              />
+            ) : userData.error === "exist" ? (
+              <Alert
+                message="Error"
+                description="User already exist"
                 type="error"
                 showIcon
               />
