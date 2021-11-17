@@ -12,6 +12,7 @@ export default function Signup() {
     firstname: "",
     lastname: "",
     email: "",
+    dbemail: "",
     password: "",
     loading: false,
     error: "",
@@ -58,22 +59,24 @@ export default function Signup() {
     const starCountRef = ref(db, "users");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log(data, "data");
       dbEmail =
         Object.keys(data)
           .map((key) => {
             const newData = data[key];
-            console.log(newData, "new data");
             return newData;
           })
           .find((el) => el.email === userData.email) || [];
+      const dbfound = dbEmail.email;
+      setUserData({ ...userData, dbemail: dbfound });
+      console.log(dbEmail.email, " Email andr");
+      console.log(dbfound, " dbfound");
+
+      // setNewEmail(dbEmail.email);
     });
-    setNewEmail(dbEmail.email);
-    console.log(dbEmail, "dbEmail");
-    console.log(dbEmail.email, "dbEmail ka email");
-    console.log(userData.email, "userdata ka email");
-    // console.log(em, "user given email");
-    // setUserData({ ...userData, email: dbEmail.email });
+
+    // setNewEmail(dbEmail.email);
+    // console.log(dbEmail, "dbEmail");
+    // setNewEmail(dbEmail.email);
   }
   let name, value;
   const postUserData = (event) => {
@@ -87,7 +90,8 @@ export default function Signup() {
     setUserData({ ...userData, loading: true });
     event.preventDefault();
     const { firstname, lastname, email, password } = userData;
-
+    console.log(newEmail, " new email");
+    console.log(userData.dbemail, "db ka email");
     if (userData.email === newEmail) {
       setUserData({ ...userData, error: "exist", posted: "false" });
     } else {

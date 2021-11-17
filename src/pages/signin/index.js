@@ -15,24 +15,25 @@ export default function Signin() {
       password: "",
     },
   ]);
-  let email = "";
+  let emaill = "";
   useEffect(() => {
     const db = getDatabase();
     const starCountRef = ref(db, "users");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
 
-      email =
+      emaill =
         Object.keys(data)
           .map((key) => {
-            console.log(key, "id");
+            // console.log(key, "id");
             const newData = data[key];
             return newData;
           })
           .find((el) => el.email === "yahya@gmail.com") || [];
-      console.log(email.email, "asdmaiosndoiasnd");
+      console.log(emaill.email, "asdmaiosndoiasnd");
     });
     console.log(starCountRef, "a");
+    console.log(emaill, "email");
   }, []);
   return (
     <>
