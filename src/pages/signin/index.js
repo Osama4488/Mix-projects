@@ -1,5 +1,5 @@
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../firebase.js";
+import { db } from "../../../firebase-config.js";
 import { collection, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 
@@ -30,7 +30,7 @@ export default function Signin() {
             return newData;
           })
           .find((el) => el.email === "yahya@gmail.com") || [];
-      console.log(emaill.email, "asdmaiosndoiasnd");
+      // console.log(emaill.email, "asdmaiosndoiasnd");
     });
     console.log(starCountRef, "a");
     console.log(emaill, "email");

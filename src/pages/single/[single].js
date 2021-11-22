@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { db } from "../../../firebase.js";
+import { db } from "firebase-config.js";
 import { collection, addDoc } from "firebase/firestore";
 export default function Single() {
   const router = useRouter();

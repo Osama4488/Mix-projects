@@ -1,10 +1,8 @@
 module.exports = {
   reactStrictMode: true,
-}
-
+};
 
 const { join, resolve } = require("path");
-
 
 const paths = {
   src: join(__dirname, "src"),
@@ -14,9 +12,8 @@ const paths = {
 const alias = {
   static: paths.static,
   pages: join(paths.src, "pages"),
-  services: join(paths.src,"services"),
+  services: join(paths.src, "services"),
+  services: join(paths.src, "service"),
   components: join(paths.src, "components"),
   scss: join(paths.src, "scss"),
 };
-
-
