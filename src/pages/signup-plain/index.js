@@ -55,7 +55,7 @@ export default function Signup() {
 
   function getDbUsers() {
     let dbEmail = [];
-    let jj = "";
+
     const db = getDatabase();
     const starCountRef = ref(db, "users");
     onValue(starCountRef, async (snapshot) => {
@@ -243,54 +243,6 @@ export default function Signup() {
           </div>
         </div>
       </div>
-
-      {/* end */}
-      {/* <div className="container">
-        <form className="form-1" onSubmit={(e) => onSubmit(e)}>
-          <h1>Signup</h1>
-          <label htmlFor="First Name">First Name</label>
-          <input
-            value={userData.firstname}
-            onChange={postUserData}
-            name="firstname"
-            id="firstname"
-            required
-          />
-          <label htmlFor="Last Name">Last Name</label>
-          <input
-            value={userData.lastname}
-            onChange={postUserData}
-            name="lastname"
-            id="lastname"
-            required
-          />
-
-          <label htmlFor="email">Email</label>
-          <input
-            value={userData.email}
-            onChange={postUserData}
-            type="email"
-            name="email"
-            id="email"
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            value={userData.password}
-            onChange={postUserData}
-            type="password"
-            name="password"
-            id="password"
-            required
-          />
-
-          <button onClick={onSubmitFirebase} style={{ color: "#fff" }}>
-            Login
-          </button>
-
-         
-        </form>
-      </div> */}
     </>
   );
 }

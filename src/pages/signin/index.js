@@ -32,8 +32,6 @@ export default function Signin() {
           .find((el) => el.email === "yahya@gmail.com") || [];
       // console.log(emaill.email, "asdmaiosndoiasnd");
     });
-    console.log(starCountRef, "a");
-    console.log(emaill, "email");
   }, []);
   return (
     <>

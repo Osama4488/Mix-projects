@@ -9,9 +9,16 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { onValue } from "firebase/database";
 import { useRef } from "react";
 import { AuthService } from "../../service/AuthService.js";
-
+import useAuth from "../../hook/auth";
 export default function Signup() {
-  const { createUserWithEmailAndPassword, error } = AuthService;
+  // const { createUserWithEmailAndPassword, error } = AuthService;
+  const {
+    user,
+    createUserWithEmailAndPassword,
+    error,
+    logout,
+    onAuthStateChanged,
+  } = useAuth();
   const email = useRef();
   const password = useRef();
 
@@ -20,9 +27,12 @@ export default function Signup() {
 
     await createUserWithEmailAndPassword(
       email.current.value,
-      password.current.value
+      password.current.value,
+      firstname.current.value,
+      lastname.current.value
     );
   };
+  console.log(onAuthStateChanged, "oNAuthstatechnaged");
 
   return (
     <>
@@ -89,7 +99,7 @@ export default function Signup() {
                   required
                 />
 
-                <button>Register</button>
+                <button className="signup-firebase-btn">Register</button>
                 {/* <label htmlFor="" className="pass">
                   Password
                 </label>

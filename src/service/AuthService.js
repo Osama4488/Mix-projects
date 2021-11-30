@@ -61,7 +61,7 @@ export const AuthService = {
   resetPassword: async (email, password) => {
     try {
       const userCred = await firebaseauth.sendPasswordResetEmail(fAuth, email, {
-        urk: "http://localhost:3000/login",
+        url: "http://localhost:3000/login",
       });
     } catch (e) {
       return {
