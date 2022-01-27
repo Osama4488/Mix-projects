@@ -21,7 +21,8 @@
 import { initializeApp } from "firebase/app";
 // import { getAuth } from "firebase/auth";
 import * as auth from "firebase/auth";
-// import { getFirestore } from "firebase/firestore";
+
+import { getFirestore } from "firebase/firestore";
 
 // import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
@@ -37,7 +38,8 @@ const firebaseConfig = {
 // if (!firebase.apps.length) {
 // firebfase.initializeApp(firebaseConfig);
 // // }
-// export const db = getFirestore();
 // export const provider = new GoogleAuthProvider();
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore();
+
 export const firebaseauth = auth;

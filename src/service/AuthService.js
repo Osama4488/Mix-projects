@@ -27,6 +27,7 @@ export const AuthService = {
         email,
         password
       );
+
       // await userCred.user.sendEmailVerification({
       //   url: "http://localhost:3000",
       // });

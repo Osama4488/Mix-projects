@@ -120,7 +120,7 @@ export default function Signup() {
     setUserData({ ...userData, loading: true });
     getDbUsers();
   };
-  console.log(userData, "userdata");
+  // console.log(userData, "userdata");
   return (
     <>
       <div className="container">

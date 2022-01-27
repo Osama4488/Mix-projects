@@ -1,6 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthService } from "service/AuthService";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "../../firebase-config";
+import { getDatabase } from "firebase/database";
+import { collection, addDoc } from "firebase/firestore";
 // import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const authContext = createContext();
 const auth = getAuth();
@@ -54,10 +57,16 @@ export function AuthProvider(props) {
         email,
         password
       );
+      console.log(user, "user");
+      // const docRef = await addDoc(collection(db, "users"), {
+      //   email: "aaa@mail.com",
+      //   password: "1111111",
+      // });
       if (error) {
         setError(error);
         return;
       }
+
       setUser(user ?? null);
     } else {
       setError("Email and Password cannot be empty");
