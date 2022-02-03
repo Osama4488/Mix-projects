@@ -15,22 +15,36 @@ export function AuthProvider(props) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [state, setState] = useState({
+    user: null,
+    loading: true,
+    error: "",
+  });
   // let onAuthStateChanged;
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user, "userrrr");
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUser(user);
         setLoading(false);
-
+        setState({
+          ...state,
+          user: user,
+          loading: false,
+        });
         // ...
       } else {
         // User is signed out
         // ...
         setLoading(false);
+        setState({
+          ...state,
 
+          loading: false,
+        });
         console.log(user, "user logged out ");
       }
     });
@@ -52,6 +66,7 @@ export function AuthProvider(props) {
   };
   const createUserWithEmailAndPassword = async (email, password) => {
     // console.log(email, password, "email password");
+
     if (email && password) {
       const { user, error } = await AuthService.createUserWithEmailAndPassword(
         email,
@@ -73,10 +88,26 @@ export function AuthProvider(props) {
     }
   };
 
+  const signInWithEmailAndPassword = async (email, password) => {
+    // Signed in
+    if (email && password) {
+      const { user, error } = await AuthService.signInWithEmailAndPassword(
+        email,
+        password
+      );
+      // const user = userCredential.user;
+      console.log(user, "userrr login");
+    } else {
+      setError("Email and Password cannot be empty");
+    }
+  };
+
   const value = {
     user,
     error,
+    state,
     loginWithGoogle,
+    signInWithEmailAndPassword,
     logout,
     createUserWithEmailAndPassword,
     onAuthStateChanged,

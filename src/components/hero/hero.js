@@ -7,13 +7,13 @@ import router, { useRouter } from "next/router";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-
+import auth from "../../hook/auth";
 export default function Hero() {
   const [keyword, setKeyword] = useState("");
 
   const [passData, setpassData] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  console.log(auth().state, "auth state");
   const [data, setData] = useState({
     loading: false,
     error: null,
@@ -88,7 +88,7 @@ export default function Hero() {
       console.log(y, "error in getting genre id ===>");
     }
   };
- 
+
   const menu = (
     <Menu
       style={{
@@ -126,9 +126,10 @@ export default function Hero() {
               Genre <AiOutlineArrowUp style={{ marginLeft: "5px" }} />
             </a>
           </Dropdown>
-          <button onClick={showDefaultDrawer} className="home-section-btn">
+          <a href="/signin" className="home-section-btn">
             Sign In
-          </button>
+          </a>
+          <button onClick={auth().logout}>Sign Out</button>
         </div>
       </div>
 
