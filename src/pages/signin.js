@@ -17,7 +17,7 @@ export default function Signin() {
   let emaill = "";
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    // login krna hai
     try {
       const user = await auth().signInWithEmailAndPassword(
         userData.email,
